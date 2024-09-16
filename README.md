@@ -3,6 +3,10 @@
 ## Description
 This project is a web server application that will serve the puzzle pieces for the scavenger hunt game.
 
+## Pre-Requisites
+1. NodeJS
+2. NPM
+
 ## Getting Started
 To get the server up and running, follow these steps:
 
