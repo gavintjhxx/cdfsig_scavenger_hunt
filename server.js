@@ -8,12 +8,8 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'pages'));
 
-// Serve static files from the /public folder
+// Serve public assets like CSS, JS, and public images
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => {
-    res.send("hello... why are u here...? The hint isn't here...")
-});
 
 // Dynamically handling puzzle queries
 app.get('/puzzle/:id', (req, res) => {
@@ -23,9 +19,13 @@ app.get('/puzzle/:id', (req, res) => {
         return;
     }
     res.render('puzzle', { 
-        imageUrl: puzzleData.imagePath, 
+        imageUrl: `/${puzzleData.hash}.jpg`, 
         question: puzzleData.question 
     });
+});
+
+app.get('/*', (req, res) => {
+    res.status(404).send("hello... why are u here...? The hint isn't here...")
 });
 
 // Web Server Listener stuff
